@@ -1,0 +1,28 @@
+import nodeMailer from "nodemailer";
+import smtpTransport from "nodemailer-smtp-transport";
+import { SendEmailType } from "../types/email.types.js";
+
+const transporterDetails = smtpTransport({
+  host: "mail.ghorbany.dev",
+  port: 465,
+  secure: true,
+  auth: {
+    user: "toplearn@ghorbany.dev",
+    pass: "toplearn123456",
+  },
+  tls: {
+    rejectUnauthorized: false,
+  },
+});
+
+export const sendEmail = (props: SendEmailType) => {
+  const { email, subject, fullname, message } = props;
+  const transporter = nodeMailer.createTransport(transporterDetails);
+  transporter.sendMail({
+    from: "toplearn@ghorbany.dev",
+    to: email,
+    subject: subject,
+    html: `<h1> سلام ${fullname}</h1>
+            <p>${message}</p>`,
+  });
+};
