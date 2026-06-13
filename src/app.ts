@@ -6,10 +6,10 @@ import { config } from "dotenv";
 import { errorHandler } from "./middlewares/errors.js";
 import { setHeaders } from "./middlewares/headers.js";
 import connectDB from "./config/db.js";
-import blog from "./routes/blog.js";
-import users from "./routes/users.js";
-import dashboard from "./routes/dashboard.js";
-import { setupSwagger } from "./swagger.js";
+import blog from "./routes/blog.routes.js";
+import users from "./routes/users.routes.js";
+import dashboard from "./routes/dashboard.routes.js";
+import { setupSwagger } from "./config/swagger.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
